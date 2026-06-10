@@ -7,8 +7,10 @@ export const SubmitButton = () => {
         const nodes = getNodes();
         const edges = getEdges();
 
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
         try {
-            const response = await fetch('http://localhost:8000/pipelines/parse', {
+            const response = await fetch(`${API_URL}/pipelines/parse`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nodes, edges }),
