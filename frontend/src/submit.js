@@ -8,9 +8,10 @@ export const SubmitButton = () => {
     const edges = getEdges();
     console.log("Nodes:", nodes);
     console.log("Edges:", edges); 
-    console.log("API URL:", process.env.REACT_APP_API_URL);
+   
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+    const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:8000').replace(/\/$/, '');
+     console.log("API URL:", process.env.REACT_APP_API_URL);
 
     try {
       const response = await fetch(`${API_URL}/pipelines/parse`, {
